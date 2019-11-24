@@ -8,7 +8,7 @@ def home(request):
     return render(request, "boxcricket/home.html", {'name': 'Abhineet'})
 
 
-def list_games(request):
+def games(request):
     return render(request, "boxcricket/games.html", {'games': Game.objects.all()})
 
 
@@ -18,11 +18,12 @@ def new_game(request):
         if form.is_valid():
             game = form.save(commit=False)
             game.save()
-            return redirect('list_games')
+            return redirect('games')
     else:
         form = GameForm()
     return render(request, 'boxcricket/new_game.html', {'form': form})
 
 
-def detail_game():
-    return None
+def game_details(request, id):
+    game = Game.objects.get(id=id)
+    return render(request, "boxcricket/game.html", {'game': game})

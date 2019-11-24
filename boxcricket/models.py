@@ -9,7 +9,7 @@ class Game(models.Model):
 
     def get_absolute_url(self):
         from django.urls import reverse
-        return reverse('detail_game', args=[str(self.id)])
+        return reverse('game_details', args=[str(self.id)])
 
 
 class Team(models.Model):
