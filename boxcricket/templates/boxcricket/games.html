@@ -1,0 +1,13 @@
+{% extends 'boxcricket/base.html' %}
+
+{% block content %}
+<h1>{{ section.title }}</h1>
+
+<ul>
+{% for game in games %}
+  <li>
+    <a href="{{ game.get_absolute_url }}">{{ game.date }}</a>
+  </li>
+{% endfor %}
+</ul>
+{% endblock %}
